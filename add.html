@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Intive</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <header class="header">
+            <div class="header__logo">
+                <a href="index.html" class="logo"><img src="./images/logo.png" class="logo__image" alt="logo"></a>
+                <div class="hamburger">
+                    <span class="hamburger__line"></span>
+                    <span class="hamburger__line"></span>
+                    <span class="hamburger__line"></span>
+                </div>
+            </div>
+            <nav class="navigation">
+                <ul class="nav">
+                    <li class="nav__item"><a href="" class="nav__link">Dodaj herosa</a></li>
+                    <li class="nav__item"><a href="" class="nav__link">Edytuj herosa</a></li>
+                    <li class="nav__item"><a href="" class="nav__link">Wyczyść bazę</a></li>
+                    <li class="nav__item"><a href="" class="nav__link">Usuń herosa</a></li>
+                    <li class="nav__item"><a href="" class="nav__link">Wczytaj herosów</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- <section id="cart" class="cart">
+            <div class="cart__detail">
+                <h2 class="cart__title">Koszyk</h2>
+                <p class="cart__price">Do zapłaty: <span>0.00 zł</span></p>
+            </div>
+            <div class="cart__items">
+                <p class="cart_empty">Twój koszyk jest pusty.</p>
+            </div>
+        </section> -->
+
+
+        <section class="addHero">
+            <h2>Dodaj Herosa</h2>
+            <form action="">
+                <label for="heroName">Nazwa bohatera</label>
+                <input type="text" name="heroName" id="" placeholder="Nazwa bohatera">
+
+                <label for="heroPhoto">Adres/nazwa zdjęcia</label>
+                <input type="text" name="heroPhoto" id="">
+
+                <label for="heroPrice">Cena wynajmu /h</label>
+                <input type="number" name="heroPrice" id="">
+                <label for="heroDesc">Opis Bohatera</label>
+                <textarea name="heroDesc" id="" cols="30" rows="10"></textarea>
+
+            </form>
+           
+        </section>
+
+        <footer class="footer">
+            <p class="footer_desc">Need a Hero - Pure JS/CSS Aplikacja do ćwiczenia nabytej wiedzy o JavaScript.</p>
+        </footer>
+        <script src="scripts.js" async defer></script>
+    </body>
+</html>
