@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-        <header class="header">
+        <header class="header header--small">
             <div class="header__logo">
                 <a href="index.html" class="logo"><img src="./images/logo.png" class="logo__image" alt="logo"></a>
                 <div class="hamburger">
@@ -20,11 +20,11 @@
             </div>
             <nav class="navigation">
                 <ul class="nav">
-                    <li class="nav__item"><a href="" class="nav__link">Dodaj herosa</a></li>
-                    <li class="nav__item"><a href="" class="nav__link">Edytuj herosa</a></li>
-                    <li class="nav__item"><a href="" class="nav__link">Wyczyść bazę</a></li>
-                    <li class="nav__item"><a href="" class="nav__link">Usuń herosa</a></li>
-                    <li class="nav__item"><a href="" class="nav__link">Wczytaj herosów</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Dodaj herosa</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Edytuj herosa</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Wyczyść bazę</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Usuń herosa</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Wczytaj herosów</a></li>
                 </ul>
             </nav>
         </header>
@@ -41,19 +41,19 @@
 
 
         <section class="addHero">
-            <h2>Dodaj Herosa</h2>
-            <form action="">
-                <label for="heroName">Nazwa bohatera</label>
-                <input type="text" name="heroName" id="" placeholder="Nazwa bohatera">
+            <h2 class="addHero__title">Dodaj Herosa</h2>
+            <form class="form" action="">
+                <label class="form__label" for="heroName">Nazwa bohatera</label>
+                <input class="form__input" type="text" name="heroName" id="" placeholder="Nazwa bohatera">
 
-                <label for="heroPhoto">Adres/nazwa zdjęcia</label>
-                <input type="text" name="heroPhoto" id="">
+                <label class="form__label" for="heroPhoto">Adres/nazwa zdjęcia</label>
+                <input class="form__input" type="text" name="heroPhoto" id="" placeholder="Adres/nazwa zdjęcia">
 
-                <label for="heroPrice">Cena wynajmu /h</label>
-                <input type="number" name="heroPrice" id="">
-                <label for="heroDesc">Opis Bohatera</label>
-                <textarea name="heroDesc" id="" cols="30" rows="10"></textarea>
-
+                <label class="form__label" for="heroPrice">Cena wynajmu /h</label>
+                <input class="form__input" type="number" name="heroPrice" id="" placeholder="Cena wynajmu /h">
+                <label class="form__label" for="heroDesc">Opis Bohatera</label>
+                <textarea class="form__textarea" name="heroDesc" id="" cols="30" rows="5" placeholder="Opis bohatera"></textarea>
+                <button class="btn btn--blue form__button">Submit</button>
             </form>
            
         </section>
