@@ -61,7 +61,6 @@ $violet: #261d52;
     @media (max-width: 760px) {
         justify-content: flex-start;
         background: none;
-        height: 100%;
     }
 
     &__logo {
@@ -270,7 +269,6 @@ $violet: #261d52;
         margin: 15%;
 
         @media(max-width: 760px) {
-            height: 100%;
             justify-content: center;
             margin: 0;
         }
@@ -280,11 +278,12 @@ $violet: #261d52;
         display: flex;
         flex-flow: row wrap;
         justify-content: flex-end;
+    }
 
-        span {
-            width: 40px;
-            height: 40px;
-        }
+    &__close {
+        height: 40px;
+        font-weight: 700;
+        cursor: pointer;
     }
     
     &__content {

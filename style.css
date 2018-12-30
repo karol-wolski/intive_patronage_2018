@@ -41,8 +41,7 @@
   @media (max-width: 760px) {
     .header {
       justify-content: flex-start;
-      background: none;
-      height: 100%; } }
+      background: none; } }
   .header__logo {
     padding: 0 0 0 20px; }
     @media (max-width: 760px) {
@@ -199,16 +198,16 @@
     margin: 15%; }
     @media (max-width: 760px) {
       .modal__container {
-        height: 100%;
         justify-content: center;
         margin: 0; } }
   .modal__header {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-end; }
-    .modal__header span {
-      width: 40px;
-      height: 40px; }
+  .modal__close {
+    height: 40px;
+    font-weight: 700;
+    cursor: pointer; }
   .modal__content {
     display: flex;
     justify-content: center; }
