@@ -61,7 +61,6 @@ $violet: #261d52;
     @media (max-width: 760px) {
         justify-content: flex-start;
         background: none;
-        height: 100%;
     }
 
     &__logo {
@@ -171,10 +170,11 @@ $violet: #261d52;
 
     &__detail {
         display: inline-flex;
-        width: 100%;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
+        width: 100%;
+        margin: 0 10px;
 
         @media (max-width: 760px) {
             flex-direction: column;
@@ -201,6 +201,10 @@ $violet: #261d52;
     &__items {
         margin: 20px auto;
     }
+
+    &__empty {
+        margin: 20px 0;
+    }
 }
 
 .heroes {
@@ -211,8 +215,8 @@ $violet: #261d52;
     max-width: 960px;
     margin: 0 auto;
 
-    @media (max-width: 760px) {
-        // flex-direction: column;
+    &__title {
+        display: none;
     }
 }
 
@@ -270,7 +274,6 @@ $violet: #261d52;
         margin: 15%;
 
         @media(max-width: 760px) {
-            height: 100%;
             justify-content: center;
             margin: 0;
         }
@@ -280,11 +283,12 @@ $violet: #261d52;
         display: flex;
         flex-flow: row wrap;
         justify-content: flex-end;
+    }
 
-        span {
-            width: 40px;
-            height: 40px;
-        }
+    &__close {
+        height: 40px;
+        font-weight: 700;
+        cursor: pointer;
     }
     
     &__content {
@@ -295,7 +299,6 @@ $violet: #261d52;
     &__image {
         height: 300px;
         width: 300px;
-        // margin: 0 10px;
         margin-right: 20px;
     }
 
@@ -329,15 +332,6 @@ $violet: #261d52;
         border-bottom: 1px solid $grey;
         padding: 10px 0;
         margin: 15px 0;
-
-    }
-
-    &__button {
-        color: $white;
-        background: $green;
-        border: none;
-        padding: 10px 40px;
-        cursor: pointer;
 
     }
 }
@@ -380,6 +374,34 @@ $violet: #261d52;
         margin: 8px 0;
     }
 
+}
+
+.item {
+    &__content {
+        display: flex;
+    }
+
+    &__details {        
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+    }   
+
+    &__title {        
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+
+    &__desc {        
+        text-align: left;
+        font-size: 12px;
+    }
+
+    &__image {
+        height: 170px;
+        margin: 0 10px;
+    }
 }
 
 // --------------------- BUTTONS
@@ -429,3 +451,4 @@ $violet: #261d52;
         } 
     }
 }
+
