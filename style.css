@@ -125,10 +125,11 @@
       margin: 15px 15px; } }
   .cart__detail {
     display: inline-flex;
-    width: 100%;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center; }
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 10px; }
     @media (max-width: 760px) {
       .cart__detail {
         flex-direction: column; } }
@@ -144,6 +145,8 @@
         padding-top: 20px; } }
   .cart__items {
     margin: 20px auto; }
+  .cart__empty {
+    margin: 20px 0; }
 
 .heroes {
   display: flex;
@@ -152,6 +155,8 @@
   align-items: center;
   max-width: 960px;
   margin: 0 auto; }
+  .heroes__title {
+    display: none; }
 
 .hero {
   margin-top: 50px;
@@ -237,12 +242,6 @@
     border-bottom: 1px solid #c6c8d6;
     padding: 10px 0;
     margin: 15px 0; }
-  .modal__button {
-    color: #fff;
-    background: #00aa54;
-    border: none;
-    padding: 10px 40px;
-    cursor: pointer; }
 
 .addHero {
   display: flex;
@@ -270,6 +269,27 @@
     width: 100%; }
   .form__button {
     margin: 8px 0; }
+
+.item__content {
+  display: flex; }
+
+.item__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start; }
+
+.item__title {
+  font-size: 18px;
+  text-transform: uppercase; }
+
+.item__desc {
+  text-align: left;
+  font-size: 12px; }
+
+.item__image {
+  height: 170px;
+  margin: 0 10px; }
 
 .btn {
   color: #fff;

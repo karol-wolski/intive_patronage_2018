@@ -4,7 +4,7 @@ let heroesData = [
         description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum possimus laudantium a esse corrupti provident temporibus natus labore expedita vel.',
         image: 'superman.jpg',
         price: '3500',
-        isAvailable: true
+        isAvailable: false
      },
      {
         name: 'Hulk',
@@ -40,8 +40,11 @@ let heroesData = [
         image: 'superman.jpg',
         price: '2000',
         isAvailable: true
-     },
-    ]
+    },
+]
+
+let price = 0;
+let cartPrice = document.querySelector('.cart__price span');
 
 // Hamburger
 const hamburger = document.querySelector('.hamburger');
@@ -82,7 +85,8 @@ function addHero() {
             <img src="./images/${hero.image}" alt="${hero.name}" class="hero__image">
             <h2 class="hero__name">${hero.name}</h2>
             <p class="hero_price">Cena wynajmu: ${hero.price} zł/h</p>`;
-	}
+    }
+    saveAllToLocalStorage('heroes', heroesData);
 }
 (sectionHeroes !=  null) ? addHero() : '';
 
@@ -95,6 +99,8 @@ heroes.forEach(function(hero, i){
         modal(i);
     });
 });
+
+
 
 // Modal
 let modalSection = document.querySelector('#modal');
@@ -113,11 +119,24 @@ function modal(i) {
                 ${heroesData[i].description}
                 </p>
                 <p class="modal__price">Wynajem: <span>${heroesData[i].price} zł/h</span></p>
-                <button id="${[i]}" class="modal__button">Dodaj do koszyka</button>
+                ${ (!document.querySelector(`#${heroesData[i].name}`) ? 
+                (heroesData[i].isAvailable === true) ? 
+                    (`<button id="modal__button" class="btn btn--green">Dodaj do koszyka</button>`) : 
+                    `<p>Hero jest obecnie niedostępny.` 
+                : `<p>Hero jest już w Twoim koszyku.`)}
             </div>
         </div>
     </div>
     `;
+
+    const modalButton = document.querySelector('#modal__button');
+    (modalButton) ?
+        (modalButton.addEventListener('click', function(){
+        addToCart(i);
+        cartPrice.innerHTML = `${countPrice(heroesData[i].price)} zł`;
+        modalButton.remove();
+        document.querySelector('.modal__details').innerHTML += ('<p>Hero jest już w Twoim koszyku.</p>');
+    })) : '';
 
     const modalClose = document.querySelector('.modal__close');
     modalClose.addEventListener('click', function(){
@@ -125,3 +144,46 @@ function modal(i) {
     });
 }
 
+let cartSection = document.querySelector('#cart__items');
+function addToCart(i) {
+    (document.querySelector('#cart__empty')) ? document.querySelector('#cart__empty').remove() :'';
+    cartSection.innerHTML += `
+    <div id="${heroesData[i].name}" class="hero">
+        <div class="item__content">
+            <img src="./images/${heroesData[i].image}" alt="${heroesData[i].name}" class="item__image">
+        
+            <div class="item__details">
+                <h2 class="item__title">${heroesData[i].name}</h2>
+                <p class="item__desc">
+                ${heroesData[i].description}
+                </p>
+                <button onclick='removeItem(${heroesData[i].name}, ${heroesData[i].price} )' id='remove__${heroesData[i].name}' class="btn btn--red">Usuń z koszyka</button>
+            </div>
+        </div>
+    </div>`;
+
+    saveToLocalStorage('cartItem', heroesData[i]);
+}
+
+
+function removeItem(name, price) {
+    cartPrice.innerHTML = `${countPrice(-price)} zł`;
+    name.remove();
+}
+
+
+function countPrice(i) {
+    price = (parseFloat(price) + parseFloat(i));
+    return price;
+}
+cartPrice.innerHTML = `${price.toFixed(2)} zł`;
+
+function saveAllToLocalStorage(name, element){
+    localStorage.setItem(name, JSON.stringify(element));
+}
+
+function saveToLocalStorage(name, element){
+    let existingItem = JSON.parse(localStorage.getItem(name)) || [];
+    existingItem.push(element);
+    localStorage.setItem(name, JSON.stringify(existingItem));
+}
