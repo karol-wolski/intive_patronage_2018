@@ -61,6 +61,7 @@ $violet: #261d52;
     @media (max-width: 760px) {
         justify-content: flex-start;
         background: none;
+        height: max-content;
     }
 
     &__logo {
@@ -205,7 +206,9 @@ $violet: #261d52;
     &__empty {
         margin: 20px 0;
     }
+
 }
+
 
 .heroes {
     display: flex;
@@ -236,6 +239,13 @@ $violet: #261d52;
     &__image {
         height: 450px;
         margin: 0 10px;
+    }
+}
+
+@media(min-width: 1024px){
+    #cart__items > .hero:nth-child(3n+2) {
+        border-left: 1px solid $grey;
+        border-right: 1px solid $grey;
     }
 }
 
@@ -357,7 +367,7 @@ $violet: #261d52;
     align-items: center;
 
     &__label {
-        visibility: hidden;
+        visibility: visible; //hidden
         width: 100%;
     }
 
@@ -377,6 +387,7 @@ $violet: #261d52;
 }
 
 .item {
+    color: darken($grey, 30%);
     &__content {
         display: flex;
     }

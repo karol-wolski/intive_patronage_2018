@@ -63,7 +63,7 @@ window.onscroll = function() {
 }
 
 function scrollSite() {
-    if (window.pageYOffset > sticky) {
+    if (window.pageYOffset > sticky + 5) {
         header.classList.add("header--fixed");
 
         if (window.innerWidth > 760) {
@@ -76,7 +76,7 @@ function scrollSite() {
 
 const sectionHeroes = document.querySelector('#heroes');
 
-function addHero() {
+function showHeroes() {
 	for(let hero of heroesData) {
         let div = document.createElement('div');
         div.classList.add("hero");
@@ -88,7 +88,7 @@ function addHero() {
     }
     saveAllToLocalStorage('heroes', heroesData);
 }
-(sectionHeroes !=  null) ? addHero() : '';
+(sectionHeroes !=  null) ? showHeroes() : '';
 
 // Heroes
 const heroes = document.querySelectorAll('.hero');
@@ -122,8 +122,8 @@ function modal(i) {
                 ${ (!document.querySelector(`#${heroesData[i].name}`) ? 
                 (heroesData[i].isAvailable === true) ? 
                     (`<button id="modal__button" class="btn btn--green">Dodaj do koszyka</button>`) : 
-                    `<p>Hero jest obecnie niedostępny.` 
-                : `<p>Hero jest już w Twoim koszyku.`)}
+                    `<p>Hero jest obecnie niedostępny.</p>` 
+                : `<p>Hero jest już w Twoim koszyku.</p>`)}
             </div>
         </div>
     </div>
@@ -148,7 +148,7 @@ let cartSection = document.querySelector('#cart__items');
 function addToCart(i) {
     (document.querySelector('#cart__empty')) ? document.querySelector('#cart__empty').remove() :'';
     cartSection.innerHTML += `
-    <div id="${heroesData[i].name}" class="hero">
+    <div id="${heroesData[i].name}" class="item hero">
         <div class="item__content">
             <img src="./images/${heroesData[i].image}" alt="${heroesData[i].name}" class="item__image">
         
@@ -176,7 +176,7 @@ function countPrice(i) {
     price = (parseFloat(price) + parseFloat(i));
     return price;
 }
-cartPrice.innerHTML = `${price.toFixed(2)} zł`;
+(cartPrice !== null) ? cartPrice.innerHTML = `${price.toFixed(2)} zł` :'';
 
 function saveAllToLocalStorage(name, element){
     localStorage.setItem(name, JSON.stringify(element));
@@ -186,4 +186,68 @@ function saveToLocalStorage(name, element){
     let existingItem = JSON.parse(localStorage.getItem(name)) || [];
     existingItem.push(element);
     localStorage.setItem(name, JSON.stringify(existingItem));
+}
+
+const addHeroButton = document.querySelector('#hero__add');
+addHeroButton.addEventListener('click', addHero) ;
+
+// Add new Hero
+function addHero(e) {
+    e.preventDefault();
+    let name = formCheckEmpty(document.querySelector('#hero__name'));
+    let photo = formCheckEmpty(document.querySelector('#hero__photo'));
+    let price = formCheckEmpty(document.querySelector('#hero__price')) && formCheckPrice(document.querySelector('#hero__price'));
+    let desc = formCheckEmpty(document.querySelector('#hero__desc'));
+    const isAvailable = true;
+
+    if ((name !== undefined) && (photo !== undefined) &&
+    (price !== undefined) && (desc !== undefined)) {
+        let obj = 
+        {
+            name: name,
+            description: desc,
+            image: photo,
+            price: price,
+            isAvailable: isAvailable
+        };
+        
+        heroesData.push(obj);
+        saveToLocalStorage('heroes', obj);
+
+        let inputs = document.querySelectorAll('.form > input');
+        inputs.forEach(function(input){
+            input.value = '';
+        });
+        let textarea = document.querySelector('.form > textarea');
+        textarea.value = '';
+    }
+}
+
+function formCheckEmpty(name) {
+    let label = document.querySelector(`[for="${name.id}"]`);
+    let labelSpan = document.querySelector(`[for="${name.id}"] span`) || null;
+
+    if(name.value === '' || name.value === null) {
+        if (labelSpan === null)
+            label.innerHTML += ` <span>To pole musi zostać wypełnione</span>`; 
+
+    } else {
+        if (labelSpan !== null) 
+            labelSpan.remove(); 
+            return name.value;
+    }
+}
+
+function formCheckPrice(name) {
+    let label = document.querySelector(`[for="${name.id}"]`);
+    let labelSpan = document.querySelector(`[for="${name.id}"] span`) || null;
+
+    if(!isFinite(name.value)) {
+        if (labelSpan === null)
+            label.innerHTML += ` <span>To pole musi być liczbą</span>`;
+    } else {
+        if (labelSpan !== null) 
+            labelSpan.remove();
+            return name.value;
+    }
 }
