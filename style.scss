@@ -120,8 +120,7 @@ $violet: #261d52;
 
     @media (max-width: 760px) {
         flex-direction: column;
-        align-items: center;
-        
+        align-items: center;  
         width: 100%;
     }
 
@@ -159,14 +158,15 @@ $violet: #261d52;
     flex-flow: row wrap;
     justify-content: space-around;
     align-items: center;
-    max-width: 930px;
+    max-width: 960px;
     margin: 30px auto 0px auto;
     padding: 15px 0;
     border: 1px solid $black;
 
     @media (max-width: 960px) {
         flex-direction: column;
-        margin: 15px 15px;
+        margin: 15px;
+        padding: 15px;
     }
 
     &__detail {
@@ -181,7 +181,6 @@ $violet: #261d52;
             flex-direction: column;
         }
     }
-
 
     &__title {
         width: 200px;
@@ -206,9 +205,7 @@ $violet: #261d52;
     &__empty {
         margin: 20px 0;
     }
-
 }
-
 
 .heroes {
     display: flex;
@@ -238,6 +235,7 @@ $violet: #261d52;
 
     &__image {
         height: 450px;
+        width: 300px;
         margin: 0 10px;
     }
 }
@@ -304,12 +302,21 @@ $violet: #261d52;
     &__content {
         display: flex;
         justify-content: center;
+
+        @media (max-width: 640px) and (orientation: portrait) {
+            flex-flow: column wrap;
+            align-items: center;
+        }
     }
 
     &__image {
-        height: 300px;
-        width: 300px;
+        height: 250px;
+        width: 250px;
         margin-right: 20px;
+
+        @media(max-width: 640px) and (orientation: portrait) {
+            margin-right: 0;
+        }
     }
 
     &__details {
@@ -317,6 +324,10 @@ $violet: #261d52;
         flex-direction: column;
         align-items: start;
         justify-content: space-between;
+
+        @media(max-width: 640px) {
+            align-items: center;
+        }
     }
 
     &__title {
@@ -326,9 +337,10 @@ $violet: #261d52;
         &::before {
             content: '';
             display: block;
-            width: 20px;
-            border: 1px solid $black;
-            top: 10px;
+            width: 25px;
+            border-bottom: 1px solid #000;
+            position: absolute;
+            top: 30px;
         }
     }
 
@@ -342,7 +354,6 @@ $violet: #261d52;
         border-bottom: 1px solid $grey;
         padding: 10px 0;
         margin: 15px 0;
-
     }
 }
 
@@ -383,7 +394,6 @@ $violet: #261d52;
     &__button {
         margin: 8px 0;
     }
-
 }
 
 .item {
@@ -397,6 +407,10 @@ $violet: #261d52;
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
+
+        .btn {
+            padding: 10px 20px;
+        }
     }   
 
     &__title {        
@@ -410,7 +424,8 @@ $violet: #261d52;
     }
 
     &__image {
-        height: 170px;
+        height: 140px;
+        width: 110px;
         margin: 0 10px;
     }
 }
@@ -433,7 +448,6 @@ $violet: #261d52;
     &--red {
         background: $red;
     }
-
 }
 
 // --------------------- HAMBURGER
@@ -462,4 +476,3 @@ $violet: #261d52;
         } 
     }
 }
-
