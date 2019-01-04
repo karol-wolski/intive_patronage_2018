@@ -9,7 +9,7 @@ const heroesArray = [
      {
         name: 'Hulk',
         description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum possimus laudantium a esse corrupti provident temporibus natus labore expedita vel.',
-        image: 'http://capacitybc.com/Websites/capacitybuilding/images/hero%20icon.png',
+        image: 'hulk.jpg',
         price: '25000',
         isAvailable: true
      },
