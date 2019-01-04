@@ -218,7 +218,7 @@ function addHero(e) {
         {
             name: name,
             description: desc,
-            image: photo,
+            image: photo + '.jpg',
             price: price,
             isAvailable: isAvailable
         };
@@ -266,19 +266,20 @@ function formCheckPrice(name) {
     }
 }
 
-// Heroes
 const inputs = document.querySelectorAll('.form__input');
 const textarea = document.querySelector('.form__textarea');
 
+(inputs) ?
 inputs.forEach(function(input, i){
     input.addEventListener('click', function(){
         let label = document.querySelector(`[for="${this.id}"]`);
         label.classList.add('form__label--visible'); 
     });
-});
+}) : '';
 
+(textarea) ?
 textarea.addEventListener('click', function(){
     // console.log(this.id)
     let label = document.querySelector(`[for="${this.id}"]`);
     label.classList.add('form__label--visible'); 
-});
+}) : '';
