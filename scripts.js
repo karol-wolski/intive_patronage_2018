@@ -78,6 +78,7 @@ function scrollSite() {
     }
 }
 
+// Show heroes on the page
 const sectionHeroes = document.querySelector('#heroes');
 
 function showHeroes() {
@@ -155,6 +156,7 @@ function modal(i) {
     });
 }
 
+// Add hero to cart 
 let cartSection = document.querySelector('#cart__items');
 function addToCart(i) {
     let reg = /(\w+:\/\/)([^/]+)([^#?]*)([^?]*)\?*(.+)*/;
@@ -190,6 +192,7 @@ function countPrice(i) {
     return price;
 }
 
+// LocalStorage
 function saveAllToLocalStorage(name, element){
     localStorage.setItem(name, JSON.stringify(element));
 }
@@ -200,10 +203,10 @@ function saveToLocalStorage(name, element){
     localStorage.setItem(name, JSON.stringify(existingItem));
 }
 
+// Add new hero
 const addHeroButton = document.querySelector('#hero__add');
 (addHeroButton) ? (addHeroButton.addEventListener('click', addHero)) : '';
 
-// Add new Hero
 function addHero(e) {
     e.preventDefault();
     let name = formCheckEmpty(document.querySelector('#hero__name'));
@@ -247,7 +250,6 @@ function formCheckEmpty(name) {
     } else {
         if (labelSpan !== null) 
             labelSpan.remove();
-            // label.classList.remove('form__label--visible'); 
             return name.value;
     }
 }
@@ -266,6 +268,7 @@ function formCheckPrice(name) {
     }
 }
 
+// Show label after click
 const inputs = document.querySelectorAll('.form__input');
 const textarea = document.querySelector('.form__textarea');
 
@@ -279,7 +282,6 @@ inputs.forEach(function(input, i){
 
 (textarea) ?
 textarea.addEventListener('click', function(){
-    // console.log(this.id)
     let label = document.querySelector(`[for="${this.id}"]`);
     label.classList.add('form__label--visible'); 
 }) : '';
