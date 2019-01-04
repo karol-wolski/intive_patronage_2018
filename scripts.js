@@ -1,4 +1,4 @@
-let heroesData = [
+const heroesArray = [
     {
         name: 'Superman',
         description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum possimus laudantium a esse corrupti provident temporibus natus labore expedita vel.',
@@ -9,42 +9,47 @@ let heroesData = [
      {
         name: 'Hulk',
         description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum possimus laudantium a esse corrupti provident temporibus natus labore expedita vel.',
-        image: 'superman.jpg',
+        image: 'http://capacitybc.com/Websites/capacitybuilding/images/hero%20icon.png',
         price: '25000',
         isAvailable: true
      },
      {
         name: 'Thor',
         description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum possimus laudantium a esse corrupti provident temporibus natus labore expedita vel.',
-        image: 'superman.jpg',
+        image: 'thor.jpg',
         price: '55000',
         isAvailable: true
      },
      {
         name: 'Ironman',
         description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum possimus laudantium a esse corrupti provident temporibus natus labore expedita vel.',
-        image: 'superman.jpg',
+        image: 'ironman.jpg',
         price: '75000',
         isAvailable: true
      },
      {
         name: 'Potter',
         description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum possimus laudantium a esse corrupti provident temporibus natus labore expedita vel.',
-        image: 'superman.jpg',
+        image: 'potter.jpg',
         price: '125000',
         isAvailable: true
      },
      {
         name: 'Batman',
         description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum possimus laudantium a esse corrupti provident temporibus natus labore expedita vel.',
-        image: 'superman.jpg',
+        image: 'batman.jpg',
         price: '2000',
         isAvailable: true
     },
-]
+];
+
+let heroesData = JSON.parse(localStorage.getItem('heroes')) || (
+    heroesArray, saveAllToLocalStorage('heroes', heroesArray));
+
 
 let price = 0;
 let cartPrice = document.querySelector('.cart__price span');
+(cartPrice !== null) ? cartPrice.innerHTML = `${price.toFixed(2)} zł` :'';
 
 // Hamburger
 const hamburger = document.querySelector('.hamburger');
@@ -77,18 +82,22 @@ function scrollSite() {
 const sectionHeroes = document.querySelector('#heroes');
 
 function showHeroes() {
-	for(let hero of heroesData) {
+    let reg = /(\w+:\/\/)([^/]+)([^#?]*)([^?]*)\?*(.+)*/;
+    let heroesData = JSON.parse(localStorage.getItem('heroes')) || 
+    ( heroesArray, saveAllToLocalStorage('heroes', heroesArray));
+    for(let hero of heroesData) {
         let div = document.createElement('div');
         div.classList.add("hero");
-		sectionHeroes.appendChild(div);
-		div.innerHTML = `
-            <img src="./images/${hero.image}" alt="${hero.name}" class="hero__image">
+        sectionHeroes.appendChild(div);
+        div.innerHTML = `
+            ${(reg.test(hero.image))
+            ? `<img src="${hero.image}" alt="${hero.name}" class="hero__image" />`
+            : `<img src="./images/${hero.image}" alt="${hero.name}" class="hero__image" />`}
             <h2 class="hero__name">${hero.name}</h2>
             <p class="hero_price">Cena wynajmu: ${hero.price} zł/h</p>`;
     }
-    saveAllToLocalStorage('heroes', heroesData);
 }
-(sectionHeroes !=  null) ? showHeroes() : '';
+showHeroes();
 
 // Heroes
 const heroes = document.querySelectorAll('.hero');
@@ -100,18 +109,21 @@ heroes.forEach(function(hero, i){
     });
 });
 
-
-
 // Modal
 let modalSection = document.querySelector('#modal');
 function modal(i) {
+    let reg = /(\w+:\/\/)([^/]+)([^#?]*)([^?]*)\?*(.+)*/;
+    let heroesData = JSON.parse(localStorage.getItem('heroes')) || (
+        heroesArray, saveAllToLocalStorage('heroes', heroesArray));
     modalSection.innerHTML = `
     <div class="modal__container">
         <div class="modal__header">
             <span class="modal__close">X</span>
         </div>
         <div class="modal__content">
-            <img src="./images/${heroesData[i].image}" alt="${heroesData[i].name}" class="modal__image">
+        ${(reg.test(heroesData[i].image))
+            ? `<img src="${heroesData[i].image}" alt="${heroesData[i].name}" class="modal__image" />`
+            : `<img src="./images/${heroesData[i].image}" alt="${heroesData[i].name}" class="modal__image" />`}
         
             <div class="modal__details">
                 <h2 class="modal__title">I'm the ${heroesData[i].name}</h2>
@@ -146,12 +158,16 @@ function modal(i) {
 
 let cartSection = document.querySelector('#cart__items');
 function addToCart(i) {
+    let reg = /(\w+:\/\/)([^/]+)([^#?]*)([^?]*)\?*(.+)*/;
+    let heroesData = JSON.parse(localStorage.getItem('heroes')) || (
+        heroesArray, saveAllToLocalStorage('heroes', heroesArray));
     (document.querySelector('#cart__empty')) ? document.querySelector('#cart__empty').remove() :'';
     cartSection.innerHTML += `
     <div id="${heroesData[i].name}" class="item hero">
         <div class="item__content">
-            <img src="./images/${heroesData[i].image}" alt="${heroesData[i].name}" class="item__image">
-        
+        ${(reg.test(heroesData[i].image))
+            ? `<img src="${heroesData[i].image}" alt="${heroesData[i].name}" class="item__image" />`
+            : `<img src="./images/${heroesData[i].image}" alt="${heroesData[i].name}" class="item__image" />`}  
             <div class="item__details">
                 <h2 class="item__title">${heroesData[i].name}</h2>
                 <p class="item__desc">
@@ -165,18 +181,15 @@ function addToCart(i) {
     saveToLocalStorage('cartItem', heroesData[i]);
 }
 
-
 function removeItem(name, price) {
     cartPrice.innerHTML = `${countPrice(-price)} zł`;
     name.remove();
 }
 
-
 function countPrice(i) {
     price = (parseFloat(price) + parseFloat(i));
     return price;
 }
-(cartPrice !== null) ? cartPrice.innerHTML = `${price.toFixed(2)} zł` :'';
 
 function saveAllToLocalStorage(name, element){
     localStorage.setItem(name, JSON.stringify(element));
@@ -189,7 +202,7 @@ function saveToLocalStorage(name, element){
 }
 
 const addHeroButton = document.querySelector('#hero__add');
-addHeroButton.addEventListener('click', addHero) ;
+(addHeroButton) ? (addHeroButton.addEventListener('click', addHero)) : '';
 
 // Add new Hero
 function addHero(e) {
