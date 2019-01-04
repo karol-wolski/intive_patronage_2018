@@ -46,7 +46,6 @@ const heroesArray = [
 let heroesData = JSON.parse(localStorage.getItem('heroes')) || (
     heroesArray, saveAllToLocalStorage('heroes', heroesArray));
 
-
 let price = 0;
 let cartPrice = document.querySelector('.cart__price span');
 (cartPrice !== null) ? cartPrice.innerHTML = `${price.toFixed(2)} zł` :'';
@@ -97,10 +96,10 @@ function showHeroes() {
             <p class="hero_price">Cena wynajmu: ${hero.price} zł/h</p>`;
     }
 }
-showHeroes();
+(sectionHeroes) ? showHeroes() : '';
 
 // Heroes
-const heroes = document.querySelectorAll('.hero');
+const heroes = document.querySelectorAll('.hero__image');
 
 heroes.forEach(function(hero, i){
     hero.addEventListener('click', function(){
@@ -242,11 +241,13 @@ function formCheckEmpty(name) {
 
     if(name.value === '' || name.value === null) {
         if (labelSpan === null)
-            label.innerHTML += ` <span>To pole musi zostać wypełnione</span>`; 
+            label.innerHTML += ` <span>To pole musi zostać wypełnione</span>`;
+            label.classList.add('form__label--visible'); 
 
     } else {
         if (labelSpan !== null) 
-            labelSpan.remove(); 
+            labelSpan.remove();
+            // label.classList.remove('form__label--visible'); 
             return name.value;
     }
 }
@@ -264,3 +265,20 @@ function formCheckPrice(name) {
             return name.value;
     }
 }
+
+// Heroes
+const inputs = document.querySelectorAll('.form__input');
+const textarea = document.querySelector('.form__textarea');
+
+inputs.forEach(function(input, i){
+    input.addEventListener('click', function(){
+        let label = document.querySelector(`[for="${this.id}"]`);
+        label.classList.add('form__label--visible'); 
+    });
+});
+
+textarea.addEventListener('click', function(){
+    // console.log(this.id)
+    let label = document.querySelector(`[for="${this.id}"]`);
+    label.classList.add('form__label--visible'); 
+});

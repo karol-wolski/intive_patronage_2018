@@ -55,7 +55,7 @@ $violet: #261d52;
         flex-wrap: nowrap;
         justify-content: space-around;
         align-items: center;
-        height: 25vh;
+        height: 150px;;
     }
     
     @media (max-width: 760px) {
@@ -378,8 +378,17 @@ $violet: #261d52;
     align-items: center;
 
     &__label {
-        visibility: visible; //hidden
+        visibility: hidden; //hidden
         width: 100%;
+        font-size: 14px;
+
+        &--visible {
+            visibility: visible;
+        }
+
+        span {
+            color: $red;
+        }
     }
 
     &__input,

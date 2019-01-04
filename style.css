@@ -37,7 +37,7 @@
       flex-wrap: nowrap;
       justify-content: space-around;
       align-items: center;
-      height: 25vh; } }
+      height: 150px; } }
   @media (max-width: 760px) {
     .header {
       justify-content: flex-start;
@@ -278,8 +278,13 @@
   justify-content: center;
   align-items: center; }
   .form__label {
-    visibility: visible;
-    width: 100%; }
+    visibility: hidden;
+    width: 100%;
+    font-size: 14px; }
+    .form__label--visible {
+      visibility: visible; }
+    .form__label span {
+      color: #c70a04; }
   .form__input, .form__textarea {
     border: none;
     border-bottom: 2px solid #c6c8d6;
