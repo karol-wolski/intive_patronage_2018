@@ -1,0 +1,46 @@
+{
+  "heroes": [
+    {
+      "name": "Thor",
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum possimus laudantium a esse corrupti provident temporibus natus labore expedita vel",
+      "image": "thor.jpg",
+      "price": "1250",
+      "isAvailable": true
+    },
+    {
+      "name": "Superman",
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum possimus laudantium a esse corrupti provident temporibus natus labore expedita vel",
+      "image": "superman.jpg",
+      "price": "1250",
+      "isAvailable": false
+    },
+    {
+      "name": "Hulk",
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum possimus laudantium a esse corrupti provident temporibus natus labore expedita vel",
+      "image": "hulk.jpg",
+      "price": "11250",
+      "isAvailable": true
+    },
+    {
+      "name": "Ironman",
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum possimus laudantium a esse corrupti provident temporibus natus labore expedita vel",
+      "image": "ironman.jpg",
+      "price": "4550",
+      "isAvailable": true
+    },
+    {
+      "name": "Potter",
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum possimus laudantium a esse corrupti provident temporibus natus labore expedita vel",
+      "image": "potter.jpg",
+      "price": "55050",
+      "isAvailable": true
+    },
+    {
+      "name": "Batman",
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum possimus laudantium a esse corrupti provident temporibus natus labore expedita vel",
+      "image": "batman.jpg",
+      "price": "1250",
+      "isAvailable": true
+    }
+  ]
+}
