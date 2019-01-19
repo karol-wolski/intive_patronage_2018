@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <header class="header">
+    <header class="header header--small">
       <div class="header__logo">
         <a href="index.html" class="logo"
           ><img src="./images/logo.png" class="logo__image" alt="logo"
@@ -30,7 +30,7 @@
             <a href="edit.html" class="nav__link">Edytuj herosa</a>
           </li>
           <li class="nav__item">
-            <a href="#" id="removeAllHeroes" class="nav__link">Wyczyść bazę</a>
+            <a href="#" class="nav__link">Wyczyść bazę</a>
           </li>
           <li class="nav__item">
             <a href="delete.html" class="nav__link">Usuń herosa</a>
@@ -42,22 +42,19 @@
       </nav>
     </header>
 
-    <div class="banner">
-      <img
-        src="./images/header.jpg"
-        class="banner__img"
-        alt="banner"
-        srcset="
-          ./images/header-760.jpg   760w,
-          ./images/header-1024.jpg 1024w,
-          ./images/header.jpg      1025w
-        "
-        sizes="100vw"
-      />
-    </div>
-
-    <section id="heroes" class="heroes">
-      <h2 class="heroes__title">Heroes</h2>
+    <section id="section__remove" class="section">
+      <h2 class="section__title">Usuń Herosa</h2>
+      <form class="form" action="#">
+        <label class="form__label form__label--visible" for="form__select"
+          >Wybierz istniejącego Herosa</label
+        >
+        <select id="form__select" class="form__select">
+          <option>--- Wybierz ---</option>
+        </select>
+        <button id="hero__delete" class="btn btn--blue form__button">
+          Usuń
+        </button>
+      </form>
     </section>
 
     <footer class="footer">
